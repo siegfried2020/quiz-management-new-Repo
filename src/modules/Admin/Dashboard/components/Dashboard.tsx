@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import UpcomingQuizzes from './UpcomingQuizzes';
 import TopStudents from './TopStudents';
 import { axiosInstance } from '../../../../Constants/URLS/URL';

@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import { axiosInstance, Groups, Student } from "../../../../Constants/URLS/URL";
+import { axiosInstance, Groups } from "../../../../Constants/URLS/URL";
 import AddGroup from "./AddGroup";
-import DeleteGroup from "./DeleteGroup";
 import { toast } from "react-toastify";
 import { SubmitHandler } from "react-hook-form";
 import EditGroup from "./EditGroup";
 import { Link } from "react-router-dom";
 import DeleteConfirmation from "../../../Shared/DeleteConfirmation/DeleteConfirmation";
+
+interface GroupFormData {
+  name: string;
+  students: string[];
+}
 
 
 export default function Group() {
@@ -29,7 +33,7 @@ export default function Group() {
   };
 
   // Add Group 
-  const addNewGroup:SubmitHandler<FormData>=async(data:any)=>{
+  const addNewGroup:SubmitHandler<GroupFormData>=async(data)=>{
     try{
       const response=await axiosInstance.post(Groups.createGroup, data)
       getGroups()
@@ -61,7 +65,7 @@ export default function Group() {
   };
 
   //Edit Group 
-  const editGroup: SubmitHandler<FormData> = async (data: any) => {
+  const editGroup: SubmitHandler<GroupFormData> = async (data) => {
     try {
       if (selectedId) {
         const response = await axiosInstance.put(Groups.updateGroup(selectedId), data);
@@ -123,7 +127,7 @@ export default function Group() {
         handleCloseEditGroup={handleCloseEditGroup}
         EditGroup={editGroup} // Ensure correct prop name
         isOpenEditGroup={isOpenEdit}
-        groupData={groupData} // Pass groupData for editing
+        existingGroupName={groupData?.name ?? ""}
       />
 
     <div className="flex justify-between items-center space-x-2 mb-5">

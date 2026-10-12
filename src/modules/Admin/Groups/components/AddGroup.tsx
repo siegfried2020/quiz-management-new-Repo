@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { axiosInstance, Student } from '../../../../Constants/URLS/URL';
-import { MenuItem, Select, InputLabel, FormControl, Chip, Box, SelectChangeEvent } from '@mui/material';
+import { MenuItem, Select, FormControl, Chip, Box, SelectChangeEvent } from '@mui/material';
 
 interface FormData {
   name: string;
