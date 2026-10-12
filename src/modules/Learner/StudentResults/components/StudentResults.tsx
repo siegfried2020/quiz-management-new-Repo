@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { axiosInstance, Quiz } from '../../../../Constants/URLS/URL';
 
 export default function StudentResults() {
 
-   const [completedQuizzes, setCompletedQuizzes] = useState([]);
+   const [, setCompletedQuizzes] = useState([]);
   
       const getCompletedQuizzes = async () => {
           try {

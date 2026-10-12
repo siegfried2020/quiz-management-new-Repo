@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import joinquiz from '../../../../assets/join-quiz.svg';
 import Logo from '../../../../assets/Logo-black.svg';
 import { IoClose } from "react-icons/io5";

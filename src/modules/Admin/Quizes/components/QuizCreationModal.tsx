@@ -1,7 +1,6 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import QuizData from "./Quizes"; // make sure to import QuizData type
+import type { QuizData } from "./Quizes";
 import { GetRequiredMessage } from "../../../../Constants/Validation/validation";
 
 interface QuizCreationModalProps {

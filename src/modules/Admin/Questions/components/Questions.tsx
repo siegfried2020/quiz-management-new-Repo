@@ -53,7 +53,7 @@ export default function Questions() {
   // get all QU
   const allQut = async () => {
     try {
-      const { data } = await axiosInstance.get<QU_IF>(QuestionsUrl.gettAllQUT);
+      const { data } = await axiosInstance.get<QU_IF[]>(QuestionsUrl.gettAllQUT);
       setquestion(data);
     } catch (error) {
       console.log(error);
@@ -94,7 +94,6 @@ export default function Questions() {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     setValue,
     formState: { errors },
@@ -140,7 +139,7 @@ export default function Questions() {
     }
   };
 
-  const Modal = ({ isOpen, closeModal }) => {
+  const Modal = ({ isOpen, closeModal }: { isOpen: boolean; closeModal: () => void }) => {
     if (!isOpen) return null;
 
     return (

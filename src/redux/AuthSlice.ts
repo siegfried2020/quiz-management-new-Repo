@@ -1,7 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { jwtDecode } from "jwt-decode";
 
-const initialState = {
+export interface AuthUser {
+  email: string;
+  role: string;
+  [key: string]: unknown;
+}
+
+interface AuthState {
+  token: string | null;
+  user: AuthUser | null;
+  error: string | null;
+}
+
+const initialState: AuthState = {
   token: localStorage.getItem("token") || null,
   user: null,
   error: null,
@@ -15,7 +27,7 @@ const AuthSlice = createSlice({
       
       // localStorage.setItem("token", action.payload);
       // state.user = jwtDecode(action.payload);
-      state.user = action.payload ? jwtDecode(action.payload) : null
+      state.user = action.payload ? jwtDecode<AuthUser>(action.payload) : null
     },
     clearToken: (state) => {
       state.token = null;

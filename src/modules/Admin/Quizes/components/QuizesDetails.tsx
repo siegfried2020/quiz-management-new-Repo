@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCalendarAlt, FaCheck, FaPen, FaTrash } from "react-icons/fa";
 import { FaAnglesRight } from "react-icons/fa6";
 import { MdWatchLater } from "react-icons/md";
-import { axiosInstance, Groups, Quiz } from "../../../../Constants/URLS/URL";
+import { axiosInstance, Quiz } from "../../../../Constants/URLS/URL";
 import { format } from "date-fns";
 
 import DeleteConfirmation from "../../../Shared/DeleteConfirmation/DeleteConfirmation";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { GetRequiredMessage } from "../../../../Constants/Validation/validation";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 interface quizData {
   _id: number;
   title: string;
@@ -32,19 +32,16 @@ interface QuizData {
 }
 
 export default function QuizesDetails() {
-  const params = useParams();
   const [quizes, setQuizes] = useState<quizData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [quizId, setQuizId] = useState(0);
-  const [groups, setGroups] = useState([]);
-
   const {
     register,
     handleSubmit,
     reset,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<QuizData>();
 
   const toggleModal = (id: number) => {
@@ -69,16 +66,6 @@ export default function QuizesDetails() {
       getQuizById();
     }
   }, [quizId, setValue]);
-
-  const getAllGroups = async () => {
-    try {
-      const response = await axiosInstance.get(Groups.getAll);
-      console.log(response.data);
-      setGroups(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const getAllQuizzes = async () => {
     try {
@@ -112,15 +99,14 @@ export default function QuizesDetails() {
       getAllQuizzes();
       toast.success(response.data.message || "Updated successfully");
       setIsEditModalOpen(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error in onSubmitEdit:", error);
-      toast.error(error.response.data.message || "Failed to update ");
+      toast.error(error?.response?.data?.message || "Failed to update ");
     }
   };
 
   useEffect(() => {
     getAllQuizzes();
-    getAllGroups();
   }, []);
   return (
     <>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
@@ -14,7 +13,7 @@ interface CompletedQuizzesProps {
   quizzes: CompletedQuizzes[]; // Prop name should match the parent component
 }
 
-const CompletedQuizzes = ({ quizzes }) => {
+const CompletedQuizzes = ({ quizzes }: CompletedQuizzesProps) => {
   return (
     <div className="border-2 rounded-lg p-4 mt-8">
       <div className="flex items-center justify-between">

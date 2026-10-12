@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaLongArrowAltRight } from 'react-icons/fa';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 

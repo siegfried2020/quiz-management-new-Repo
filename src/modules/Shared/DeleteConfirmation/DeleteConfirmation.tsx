@@ -1,16 +1,16 @@
-// interface DeleteConfirmationProps {
-//   deleteFun: () => void;
-//   showModal: boolean;
-//   closeModal: () => void;
-//   title: string;
-// }
+interface DeleteConfirmationProps {
+  deleteFun: () => void;
+  showModal: boolean;
+  closeModal: () => void;
+  title: string;
+}
 
 export default function DeleteConfirmation({
     deleteFun,
     showModal,
     closeModal,
     title,
-  }) {
+  }: DeleteConfirmationProps) {
     return (
       <>
         {showModal && (

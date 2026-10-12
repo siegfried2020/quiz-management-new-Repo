@@ -1,8 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom';
-import { TiArrowRight } from 'react-icons/ti';
 import { GoDotFill } from "react-icons/go";
-import image5 from '../../../../assets/user5.svg';
 
 interface Group {
   name: string;

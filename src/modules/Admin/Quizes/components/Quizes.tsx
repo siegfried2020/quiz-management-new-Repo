@@ -1,23 +1,17 @@
-import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsBank2 } from "react-icons/bs";
-import { FaCheck, FaCheckCircle, FaLongArrowAltRight } from "react-icons/fa";
-import { IoIosAlarm, IoIosCopy } from "react-icons/io";
-import { TiArrowRight } from "react-icons/ti";
+import { IoIosAlarm } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import upcoming1 from "../../../../assets/images/upcoming-quiz1.png";
- import { axiosInstance, Groups, Quiz } from "../../../../Constants/URLS/URL";
-import { GetRequiredMessage } from "../../../../Constants/Validation/validation";
-import { useNavigate } from "react-router-dom";
+import { axiosInstance, Groups, Quiz } from "../../../../Constants/URLS/URL";
 import UpcomingQuizzes from "../../Dashboard/components/UpcomingQuizzes";
 import CompletedQuizzes from "./CompleteQuiz";
 import QuizCreationModal from "./QuizCreationModal";
 import SuccessModal from "./SuccessModal";
 // import upcoming2 from "../../../../assets/images/upcoming-quiz2.png"
 
-interface QuizData {
+export interface QuizData {
   title: string;
   description: string;
   group: string;
@@ -30,7 +24,6 @@ interface QuizData {
 }
 
 export default function Quizes() {
-  const navigate = useNavigate();
   const [groups, setGroups] = useState([]);
   const [firstFiveIncoming, setFirstFiveIncoming] = useState([]);
   const [completedQuizzes, setCompletedQuizzes] = useState([]);
@@ -41,7 +34,7 @@ export default function Quizes() {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<QuizData>();
 
 

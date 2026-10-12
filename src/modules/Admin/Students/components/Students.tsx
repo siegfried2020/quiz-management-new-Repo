@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { axiosInstance, Student } from "../../../../Constants/URLS/URL";
 import AllStudents from "./AllStudent"; 
@@ -29,9 +29,6 @@ const Students = () => {
 
   // Total number of pages
   const totalPages = Math.ceil(studentsList.length / studentsPerPage);
-
-  // Change page
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   // Handle Next and Prev buttons
   const handleNext = () => {

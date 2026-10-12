@@ -14,7 +14,7 @@ interface Result {
 const ResultSingleQuiz: React.FC = () => {
   const { quizId } = useParams();  // Get the quizId from the URL parameters
   const [results, setResults] = useState<Result[]>([]);
-  const [quizTitle, setQuizTitle] = useState<string>('');
+  const [, setQuizTitle] = useState<string>('');
 
   useEffect(() => {
     // Using fake data instead of API call for demonstration purposes

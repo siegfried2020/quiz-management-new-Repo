@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Router } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { axiosInstance, Quiz } from '../../../../Constants/URLS/URL';
 import AllDetailsCompleteQuizzes from './AllDetailsCompleteQuizzes';
-import ResultSingleQuiz from './ResultSingleQuiz';
 
 
 
